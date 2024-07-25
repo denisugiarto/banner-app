@@ -1,9 +1,8 @@
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import illustration1 from "./assets/illustration1.svg";
-import illustration2 from "./assets/illustration2.svg";
-import stars from "./assets/stars.svg";
-import wallet from "./assets/wallet.svg";
-import Button from "./components/Button";
+import { Box, Typography, useTheme } from "@mui/material";
+import blobOutline from "../assets/blob-outline.svg";
+import blobSolid from "../assets/blob-solid.svg";
+import stars from "../assets/stars.svg";
+import Button from "./Button";
 
 type BannerProps = {
   title: string;
@@ -18,7 +17,6 @@ export default function Banner({
   description,
 }: BannerProps) {
   const theme = useTheme();
-  const mobileView = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box
       sx={{
@@ -73,27 +71,27 @@ export default function Banner({
         onClick={buttonOnClick}
         variant="outlined"
         sx={{ zIndex: 1 }}
-        size={mobileView ? "small" : "large"}
+        size="medium"
       >
         {buttonText}
       </Button>
       <img
-        src={illustration1}
-        alt="illustration 1"
-        width={mobileView ? 280 : 500}
+        src={blobOutline}
+        alt="blob outline"
+        width={500}
         style={{
           position: "absolute",
-          left: mobileView ? -80 : 10,
-          top: mobileView ? -20 : 30,
+          left: 10,
+          top: 30,
         }}
       />
       <img
-        src={illustration2}
-        alt="illustration 2"
+        src={blobSolid}
+        alt="blob solid"
         style={{
           position: "absolute",
-          right: mobileView ? -300 : 160,
-          top: mobileView ? -80 : -5,
+          right: 160,
+          top: -5,
         }}
       />
       <img
@@ -107,17 +105,10 @@ export default function Banner({
         width={850}
         style={{
           position: "absolute",
-          right: mobileView ? -450 : -320,
+          right: -320,
           top: 0,
         }}
       />
-      {mobileView && (
-        <img
-          src={wallet}
-          alt="stars"
-          style={{ position: "absolute", right: 0, bottom: 0 }}
-        />
-      )}
     </Box>
   );
 }

@@ -1,19 +1,20 @@
-import { Container, useMediaQuery } from "@mui/material";
-import Banner from "./Banner";
-import theme from "./theme";
+import { Container } from "@mui/material";
+import Banner from "./components/Banner";
+import MiniBanner from "./components/MiniBanner";
 function App() {
-  const mobileView = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Container>
-      <Banner
-        title={`${!mobileView ? "Introducing: " : ""} test service`}
+    <Container sx={{ display: "flex", flexDirection: "column" }}>
+      <MiniBanner
+        title="TEST SERVICE"
         buttonText="Learn more"
-        description={
-          mobileView
-            ? "Lorem sit and dolor consector lorlepspsm!"
-            : "Lorem ipsum dolor sit amet, consectetur adipiscing elit donec vitae faucibus."
-        }
-        buttonOnClick={() => alert("onClick")}
+        description="Lorem sit and dolor consector lorlepspsm!"
+        buttonOnClick={() => alert("mini banner")}
+      />
+      <Banner
+        title="Introducing: test service"
+        buttonText="Learn more"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit donec vitae faucibus."
+        buttonOnClick={() => alert("banner")}
       />
     </Container>
   );
