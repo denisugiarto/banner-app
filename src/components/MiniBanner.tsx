@@ -27,7 +27,7 @@ export default function MiniBanner({
         background: "linear-gradient(108deg, #8599FF 33.83%, #DAE0FF 114.7%)",
         display: "flex",
         rowGap: 4,
-        width: "467px",
+        maxWidth: "467px",
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "self-start",
@@ -99,17 +99,7 @@ export default function MiniBanner({
       <img
         src={stars}
         alt="stars"
-        style={{ position: "absolute", left: 10, top: -5 }}
-      />
-      <img
-        src={stars}
-        alt="stars"
-        width={850}
-        style={{
-          position: "absolute",
-          right: -450,
-          top: 0,
-        }}
+        style={{ position: "absolute", left: 10, top: -5, opacity: 0.7 }}
       />
       <img
         src={wallet}
@@ -118,7 +108,7 @@ export default function MiniBanner({
         style={{
           position: "absolute",
           right: 10,
-          top: 55,
+          bottom: 60,
           transform: "rotate(-18.603deg)",
           filter: "drop-shadow(13px 4px 56px rgba(16, 24, 40, 0.20))",
           zIndex: 2,

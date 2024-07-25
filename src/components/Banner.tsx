@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import blobOutline from "../assets/blob-outline.svg";
 import blobSolid from "../assets/blob-solid.svg";
 import stars from "../assets/stars.svg";
@@ -17,6 +17,7 @@ export default function Banner({
   description,
 }: BannerProps) {
   const theme = useTheme();
+  const mobileView = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box
       sx={{
@@ -25,6 +26,7 @@ export default function Banner({
         borderRadius: 3,
         background: "linear-gradient(108deg, #8599FF 33.83%, #DAE0FF 114.7%)",
         display: "flex",
+        width: "100%",
         rowGap: 4,
         flexDirection: { xs: "column", md: "row" },
         justifyContent: "space-between",
@@ -46,8 +48,8 @@ export default function Banner({
       <div style={{ zIndex: 1 }}>
         <Typography
           sx={{
-            textTransform: { xs: "uppercase", md: "capitalize" },
-            fontSize: { xs: 11, md: 24 },
+            textTransform: "capitalize",
+            fontSize: 24,
             fontWeight: "bold",
             color: theme.palette.common.white,
           }}
@@ -58,10 +60,9 @@ export default function Banner({
         <Typography
           marginTop={{ xs: 1.5, md: 1 }}
           sx={{
-            fontSize: { xs: 24, md: 16 },
-            fontWeight: { xs: 600, md: 500 },
+            fontSize: 16,
+            fontWeight: 500,
             color: theme.palette.common.white,
-            width: { xs: "70%", md: "100%" },
           }}
         >
           {description}
@@ -81,23 +82,25 @@ export default function Banner({
         width={500}
         style={{
           position: "absolute",
-          left: 10,
-          top: 30,
+          left: mobileView ? -300 : 10,
+          top: mobileView ? -40 : 30,
         }}
       />
-      <img
-        src={blobSolid}
-        alt="blob solid"
-        style={{
-          position: "absolute",
-          right: 160,
-          top: -5,
-        }}
-      />
+      {!mobileView && (
+        <img
+          src={blobSolid}
+          alt="blob solid"
+          style={{
+            position: "absolute",
+            right: 160,
+            top: -5,
+          }}
+        />
+      )}
       <img
         src={stars}
         alt="stars"
-        style={{ position: "absolute", left: 10, top: -5 }}
+        style={{ position: "absolute", left: 10, top: -5, opacity: 0.7 }}
       />
       <img
         src={stars}
@@ -107,6 +110,7 @@ export default function Banner({
           position: "absolute",
           right: -320,
           top: 0,
+          opacity: 0.7,
         }}
       />
     </Box>
