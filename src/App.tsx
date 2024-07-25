@@ -1,25 +1,21 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-
+import { Container, useMediaQuery } from "@mui/material";
+import Banner from "./Banner";
+import theme from "./theme";
 function App() {
-  const [count, setCount] = useState(0);
-
+  const mobileView = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Container>
+      <Banner
+        title={`${!mobileView ? "Introducing: " : ""} TEST SERVICE`}
+        buttonText="Learn more"
+        description={
+          mobileView
+            ? "Lorem sit and dolor consector lorlepspsm!"
+            : "Lorem ipsum dolor sit amet, consectetur adipiscing elit donec vitae faucibus."
+        }
+        buttonOnClick={() => alert("onClick")}
+      />
+    </Container>
   );
 }
 
