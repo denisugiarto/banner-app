@@ -6,7 +6,7 @@ function App() {
   return (
     <Container>
       <Banner
-        title={`${!mobileView ? "Introducing: " : ""} TEST SERVICE`}
+        title={`${!mobileView ? "Introducing: " : ""} test service`}
         buttonText="Learn more"
         description={
           mobileView
